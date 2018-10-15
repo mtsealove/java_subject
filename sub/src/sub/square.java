@@ -4,11 +4,11 @@ public class square {
 
 	public static void main(String[] args) {
 		//인스턴스 생성
-		Rectangle rect=new Rectangle(10, 20, 40, 500);
+		Rectangle rect=new Rectangle(10, 20, 400, 500);
 		
 		System.out.println("사각형의 넓이: "+rect.square());
 		rect.show();
-		System.out.println("x, y좌표가 사각형 내에 있는지: "+rect.contain());
+		System.out.println("x, y좌표가 사각형 내에 있는지: "+rect.contain(new Rectangle(20, 30, 100, 300)));
 	}
 
 }
@@ -34,8 +34,11 @@ class Rectangle {
 		System.out.println("사각형의 넓이: "+width*height);
 	}
 	
-	boolean contain() { //사각형의 안에 좌표가 있는지 리턴
-		if(x<=width&&y<height) return true;
+	boolean contain(Rectangle r) { //사각형의 안에 좌표가 있는지 리턴
+		if(r.x>x&&r.y>y) {
+			if(r.x+r.width<x+width&&r.y+r.height<y+height) return true;
+			else return false;
+		}
 		else return false;
 	}
 }
