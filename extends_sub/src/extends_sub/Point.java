@@ -10,12 +10,12 @@ public class Point {
 	public static void main(String[] args) {
 		ColorPoint cp=new ColorPoint(5, 6, "yellow");
 		
-		System.out.println(cp.color);
+		System.out.println("cp.color: "+ cp.color);
 		System.out.println("x: "+cp.getX()+" y: "+cp.getY());
 		cp.setXY(10, 20);
 		cp.setColor("red");
 		
-		System.out.println(cp.color);
+		System.out.println("cp.color: "+cp.color);
 		System.out.println("x: "+cp.getX()+" y: "+cp.getY());
 	}
 	public int getX() { //x좌표 반환
@@ -38,9 +38,11 @@ class ColorPoint extends Point {
 		this.color=color;
 	}
 	void setXY(int x, int y) { //좌표 이동 메서드
+		System.out.println("setXY 호출");
 		move(x, y); //private변수에 접근
 	}
 	void setColor(String color) {
+		System.out.println("setColor 호출");
 		this.color=color;
 	}
 
