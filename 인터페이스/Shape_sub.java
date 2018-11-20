@@ -23,12 +23,12 @@ class Circle implements Shape {
 	
 	@Override
 	public double getArea() {
-		return radius*radius*3.141592;
+		return radius*radius*pi;
 	}
 
 	@Override
-	public void redraw() {
-		System.out.println("---다시 그립니다. 반지름이 "+radius+"인 원입니다.");
+	public void draw() {
+		System.out.println("반지름이 "+radius+"인 원입니다.");
 	}
 	
 }
@@ -42,12 +42,12 @@ class Oval implements Shape {
 	
 	@Override
 	public double getArea() {
-		return (width*height/4)*3.141592;
+		return (width*height/4)*pi;
 	}
 
 	@Override
-	public void redraw() {
-		System.out.println("---다시 그립니다. "+width+"x"+height+"에 내접하는 타원입니다");
+	public void draw() {
+		System.out.println(width+"x"+height+"에 내접하는 타원입니다");
 	}
 	
 }
@@ -65,13 +65,18 @@ class Rect implements Shape {
 	}
 
 	@Override
-	public void redraw() {
-		System.out.println("---다시 그립니다. "+width+"x"+height+"크기의 사각형입니다");
+	public void draw() {
+		System.out.println(width+"x"+height+"크기의 사각형입니다");
 	}
 	
 }
 
 interface Shape { //도형 인터페이스
+	final double pi=3.14;
 	double getArea(); //도형의 크기 반환
-	void redraw(); //도형 설명
+	void draw(); //도형 설명
+    default	void redraw() {
+    	System.out.println("---다시 그립니다");
+    	draw();
+    } 
 }
